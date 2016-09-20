@@ -5,9 +5,12 @@ namespace BDSA2016.Lecture03.Lib
 {
     public static class Extensions
     {
-        public static void Print<T>(this IEnumerable<T> items)
+        public static void Print<T>(this IEnumerable<T> items) 
         {
-            throw new NotImplementedException();
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public static int WordCount(this string str)

@@ -7,11 +7,11 @@ namespace BDSA2016.Lecture03.Lib.Models
     {
         public ICollection<Superhero> Superheroes { get; }
 
-        public ICollection<City> Localities { get; }
+        public ICollection<City> Cities { get; }
 
         public Repository()
         {
-            Localities = new HashSet<City>
+            Cities = new HashSet<City>
             {
                 new City { Id = 1, Name = "New York" },
                 new City { Id = 2, Name = "Metropolis" },
