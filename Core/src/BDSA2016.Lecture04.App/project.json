@@ -5,6 +5,8 @@
     "emitEntryPoint": true
   },
   "dependencies": {
+    "Microsoft.Framework.Configuration": "1.0.0-beta8",
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
     "BDSA2016.Lecture04.Lib": {
       "target": "project"
     }
