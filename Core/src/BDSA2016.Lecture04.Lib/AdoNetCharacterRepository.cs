@@ -8,7 +8,7 @@ namespace BDSA2016.Lecture04.Lib
     public class AdoNetCharacterRepository : ICharacterRepository
     {
         private readonly string _connectionString;
-        private SqlConnection _connection;
+        private readonly SqlConnection _connection;
 
         public AdoNetCharacterRepository(string connectionString)
         {
@@ -36,7 +36,7 @@ namespace BDSA2016.Lecture04.Lib
                     _connection.Open();
                 }
 
-                var id = (int) command.ExecuteScalar();
+                var id = Convert.ToInt32(command.ExecuteScalar());
 
                 character.Id = id;
 
@@ -122,6 +122,7 @@ namespace BDSA2016.Lecture04.Lib
                     WHERE Id = @Id";
 
                 command.CommandText = query;
+
                 command.Parameters.AddWithValue("@Id", character.Id);
                 command.Parameters.AddWithValue("@GivenName", character.GivenName);
                 command.Parameters.AddWithValue("@Surname", character.Surname);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System;
 using BDSA2016.Lecture04.Lib;
 using Microsoft.Framework.Configuration;
 
@@ -8,12 +9,13 @@ namespace BDSA2016.Lecture04.App
     {
         public static void Main(string[] args)
         {
-            var connectionString = GetSetting("ConnectionStrings:SqlServer");           
-            using (ICharacterRepository repository = new AdoNetCharacterRepository(connectionString))
+            using (var context = new MusicDbContext())
+            using (var repository = new AlbumRepository(context))
             {
-                foreach (var character in repository.Read())
+                foreach (var album in repository.Read())
                 {
-                    Console.WriteLine(character);
+                    Console.WriteLine($"{album.Id}: {album.Title} by {album.Artist} ({album.Year})");
+
                 }
             }
         }
