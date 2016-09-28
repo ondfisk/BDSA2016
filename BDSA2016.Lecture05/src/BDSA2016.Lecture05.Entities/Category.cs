@@ -12,6 +12,6 @@ namespace BDSA2016.Lecture05.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public ICollection<Course> Courses { get; set; }
+        public ICollection<CourseCategory> CourseCategories { get; set; }
     }
 }

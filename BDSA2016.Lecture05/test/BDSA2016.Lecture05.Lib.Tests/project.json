@@ -8,6 +8,11 @@
     "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-rc2-build10025",
     "Moq": "4.6.38-alpha",
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.0.1",
+    "BDSA2016.Lecture05.Entities": {
+      "target": "project"
+    },
     "BDSA2016.Lecture05.Lib": {
       "target": "project"
     }

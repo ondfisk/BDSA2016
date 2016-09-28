@@ -12,7 +12,7 @@ namespace BDSA2016.Lecture05.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<CourseCategory> CourseCategories { get; set; }
 
         public ICollection<Date> Dates { get; set; } = new HashSet<Date>();
     }

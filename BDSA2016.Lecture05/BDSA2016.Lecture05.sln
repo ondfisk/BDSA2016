@@ -20,6 +20,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BDSA2016.Lecture05.Lib.Test
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BDSA2016.Lecture05.Entities", "src\BDSA2016.Lecture05.Entities\BDSA2016.Lecture05.Entities.xproj", "{C3305AE0-35B6-421E-B03A-3C3DB6573ABC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDSA2016.Lecture05.Visualizer", "BDSA2016.Lecture05.Visualizer\BDSA2016.Lecture05.Visualizer.csproj", "{4B7220F3-A1FC-43FF-A082-AB7D27C07903}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{C3305AE0-35B6-421E-B03A-3C3DB6573ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3305AE0-35B6-421E-B03A-3C3DB6573ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3305AE0-35B6-421E-B03A-3C3DB6573ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7220F3-A1FC-43FF-A082-AB7D27C07903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7220F3-A1FC-43FF-A082-AB7D27C07903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7220F3-A1FC-43FF-A082-AB7D27C07903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7220F3-A1FC-43FF-A082-AB7D27C07903}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

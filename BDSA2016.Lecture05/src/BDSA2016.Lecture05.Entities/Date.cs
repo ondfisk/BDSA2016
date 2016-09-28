@@ -13,6 +13,8 @@ namespace BDSA2016.Lecture05.Entities
 
         public DateTime? End { get; set; }
 
+        public string Comment { get; set; }
+
         public int CourseId { get; set; }
 
         public Course Course { get; set; }

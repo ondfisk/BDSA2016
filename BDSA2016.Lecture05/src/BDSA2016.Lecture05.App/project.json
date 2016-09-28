@@ -9,6 +9,7 @@
     "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
     "Microsoft.EntityFrameworkCore.Sqlite": "1.0.1",
     "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.0.1",
+    "BDSA2016.Lecture05.Entities": "1.0.0-*",
     "BDSA2016.Lecture05.Lib": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "type": "platform",

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BDSA2016.Lecture05.Entities.Category">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CourseCategories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BDSA2016.Lecture05.Entities.Course">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\Course.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CourseCategories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BDSA2016.Lecture05.Entities.CourseCategory">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAgAAAIAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\CourseCategory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+      <Property Name="Course" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BDSA2016.Lecture05.Entities.Date">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIGAAAEACAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\Date.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Course" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Enrolments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BDSA2016.Lecture05.Entities.Enrolment">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgQAAAAAAAAAAAACAAAAAAAAABAAAAAAACAAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\Enrolment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Date" />
+      <Property Name="Student" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BDSA2016.Lecture05.Entities.Student">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\Student.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Enrolments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
