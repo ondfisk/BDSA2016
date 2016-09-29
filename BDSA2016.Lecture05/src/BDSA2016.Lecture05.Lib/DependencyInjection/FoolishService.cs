@@ -22,5 +22,10 @@ namespace BDSA2016.Lecture05.Lib.DependencyInjection
         public void Dispose()
         {
         }
+
+        public Foo Read(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

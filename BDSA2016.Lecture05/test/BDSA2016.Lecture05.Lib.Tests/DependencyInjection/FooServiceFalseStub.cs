@@ -1,4 +1,5 @@
-﻿using BDSA2016.Lecture05.Lib.DependencyInjection;
+﻿using System;
+using BDSA2016.Lecture05.Lib.DependencyInjection;
 
 namespace BDSA2016.Lecture05.Lib.Tests.DependencyInjection
 {
@@ -11,6 +12,11 @@ namespace BDSA2016.Lecture05.Lib.Tests.DependencyInjection
 
         public void Dispose()
         {
+        }
+
+        public Foo Read(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

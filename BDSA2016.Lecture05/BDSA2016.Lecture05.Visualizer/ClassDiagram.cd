@@ -18,6 +18,7 @@
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="CourseCategories" />
+      <Property Name="Dates" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="BDSA2016.Lecture05.Entities.CourseCategory">
@@ -27,8 +28,8 @@
       <FileName>C:\Users\rasmusl\Source\Repos\BDSA2016\BDSA2016.Lecture05\src\BDSA2016.Lecture05.Entities\CourseCategory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Category" />
       <Property Name="Course" />
+      <Property Name="Category" />
     </ShowAsAssociation>
   </Class>
   <Class Name="BDSA2016.Lecture05.Entities.Date">

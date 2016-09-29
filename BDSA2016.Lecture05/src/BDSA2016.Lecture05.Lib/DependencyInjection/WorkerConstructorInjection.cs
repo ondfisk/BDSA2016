@@ -13,7 +13,11 @@ namespace BDSA2016.Lecture05.Lib.DependencyInjection
 
         public bool DoWork(FooDto fooDto)
         {
-            throw new NotImplementedException();
+            var foo = Map(fooDto);
+
+            var result = _service.Update(foo);
+
+            return result;
         }
 
         private Foo Map(FooDto fooDto)
@@ -24,6 +28,15 @@ namespace BDSA2016.Lecture05.Lib.DependencyInjection
         public void Dispose()
         {
             _service.Dispose();
+        }
+
+        public FooDto Get(int id)
+        {
+            var foo = _service.Read(42);
+
+            var dto = new FooDto { Id = foo.Id, Name = foo.Name };
+
+            return dto;
         }
     }
 }
