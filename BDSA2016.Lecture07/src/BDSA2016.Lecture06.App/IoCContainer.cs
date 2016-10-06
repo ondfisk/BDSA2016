@@ -8,7 +8,7 @@ namespace BDSA2016.Lecture06.App
     {
         private static readonly IServiceProvider _provider = ConfigureServices();
 
-        public static void Run(string[] args)
+        public static void Run()
         {
             var service = _provider.GetService<IAnimalService>();
 

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace BDSA2016.Lecture06.AsyncUI.ViewModels
 {
-    public class MainWindowAsyncViewModel : BaseViewModel
+    public class MainWindowViewModel : BaseViewModel
     {
         private double _dkk;
 
@@ -41,39 +41,30 @@ namespace BDSA2016.Lecture06.AsyncUI.ViewModels
             set { _eur = value; OnPropertyChanged(); }
         }
 
-        public RelayCommand Calculate => new RelayCommand(CalculateRatesInParallelAsync);
+        public ICommand Calculate => new RelayCommand(CalculateRates);
 
-        private async void CalculateRatesAsync(object o)
+        private void CalculateRates(object o)
         {
-            USD = await GetRateAsync("DKK", "USD") * DKK;
-            GBP = await GetRateAsync("DKK", "GBP") * DKK;
-            EUR = await GetRateAsync("DKK", "EUR") * DKK;
+            var amount = DKK;
+
+            USD = GetRate("DKK", "USD") * DKK;
+            GBP = GetRate("DKK", "GBP") * DKK;
+            EUR = GetRate("DKK", "EUR") * DKK;
         }
 
-        private async Task<double> GetRateAsync(string from, string to)
+        private double GetRate(string from, string to)
         {
-            await Task.Delay(TimeSpan.FromSeconds(2));
+            Task.Delay(TimeSpan.FromSeconds(2)).Wait();
 
             using (var client = new WebClient())
             {
                 var url = $"http://currency-api.appspot.com/api/{from}/{to}.json";
 
-                var data = await client.DownloadStringTaskAsync(url);
+                var data = client.DownloadString(url);
                 var json = JsonConvert.DeserializeObject<ExchangeRate>(data);
 
                 return json.Rate;
             }
-        }
-
-        private async void CalculateRatesInParallelAsync(object o)
-        {
-            await Task.Run(() => 
-                Parallel.Invoke(
-                    async () => USD = await GetRateAsync("DKK", "USD") * DKK,
-                    async () => GBP = await GetRateAsync("DKK", "GBP") * DKK,
-                    async () => EUR = await GetRateAsync("DKK", "EUR") * DKK
-                )
-            );
         }
     }
 }
