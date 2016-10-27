@@ -2,7 +2,7 @@
 
 namespace BDSA2016.Lecture07.Lib.Facade
 {
-    public class PeopleRepository
+    public class PeopleRepository : IPeopleRepository
     {
         public IEnumerable<Person> All()
         {

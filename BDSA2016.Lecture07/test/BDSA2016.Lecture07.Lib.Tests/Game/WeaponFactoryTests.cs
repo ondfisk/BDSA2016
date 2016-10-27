@@ -53,7 +53,7 @@ namespace BDSA2016.Lecture07.Lib.Tests.Game
 
             var weapons = factory.Available();
 
-            Assert.Equal(new[] { "Crossbow", "Grenade", "Sword" }, weapons);
+            Assert.Equal(new[] { "Crossbow", "Grenade", "Mace", "Sword" }, weapons);
         }
     }
 }

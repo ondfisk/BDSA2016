@@ -4,7 +4,7 @@ namespace BDSA2016.Lecture07.Lib.Game
 {
     public class Game
     {
-        static void Run()
+        public static void Run()
         {
             Console.Clear();
 

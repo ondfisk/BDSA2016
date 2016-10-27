@@ -8,7 +8,7 @@ namespace BDSA2016.Lecture07.Lib.Adapter
         {
             try
             {
-                FoolishService.Update(foo);
+                FoolishService.Modify(foo);
                 return true;
             }
             catch (ArgumentException)

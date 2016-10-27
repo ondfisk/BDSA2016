@@ -1,19 +1,33 @@
-﻿namespace BDSA2016.Lecture07.Lib.Facade
+﻿using System;
+
+namespace BDSA2016.Lecture07.Lib.Facade
 {
     public class Facade
     {
-        private readonly Notifier _notifier = new Notifier();
-        private readonly Publisher _publisher = new Publisher();
-        private readonly Archiver _archiver = new Archiver();
-        private readonly PeopleRepository _peopleRepository = new PeopleRepository();
+        private readonly INotifier _notifier;
+        private readonly IPublisher _publisher;
+        private readonly IArchiver _archiver;
+        private readonly IPeopleRepository _peopleRepository;
+
+        public Facade(INotifier notifier, IPublisher publisher, IArchiver archiver, IPeopleRepository peopleRepository)
+        {
+            _notifier = notifier;
+            _publisher = publisher;
+            _archiver = archiver;
+            _peopleRepository = peopleRepository;
+        }
 
         public void Publish(Article article)
         {
+            Console.WriteLine("Publishing");
             _publisher.PublishOnline(article);
+
+            Console.WriteLine("Archiving");
             _archiver.Archive(article);
 
             var people = _peopleRepository.All();
 
+            Console.WriteLine("Notifying");
             _notifier.Notify(article, people);
         }
     }

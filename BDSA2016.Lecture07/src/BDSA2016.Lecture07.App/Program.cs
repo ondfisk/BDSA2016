@@ -6,6 +6,8 @@ using BDSA2016.Lecture07.Lib.ChainOfResponsibility;
 using BDSA2016.Lecture07.Lib.Strategy;
 using BDSA2016.Lecture07.Lib.Bridge;
 using System.Threading.Tasks;
+using BDSA2016.Lecture07.Lib.Singleton;
+using BDSA2016.Lecture07.Lib.Facade;
 
 namespace BDSA2016.Lecture07.App
 {
@@ -13,7 +15,7 @@ namespace BDSA2016.Lecture07.App
     {
         static void Main(string[] args)
         {
-            Bridge().Wait();
+            ChainOfResponsibility.Run();
         }
 
         static void IoC()
@@ -30,9 +32,7 @@ namespace BDSA2016.Lecture07.App
 
         static async Task Bridge()
         {
-            var connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Futurama;Integrated Security=SSPI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            var bridge = new Bridge(new AdoNetCharacterRepository(connectionString));
+            var bridge = IoCContainer.Provider.GetService<Bridge>();
 
             await bridge.PrintAll();
         }

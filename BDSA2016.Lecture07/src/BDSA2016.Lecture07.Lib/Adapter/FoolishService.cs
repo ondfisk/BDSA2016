@@ -2,7 +2,7 @@
 {
     public static class FoolishService
     {
-        public static void Update(Foo foo)
+        public static void Modify(Foo foo)
         {
             // Implementation throws ArgumentException or InvalidOperationException on error
         }
