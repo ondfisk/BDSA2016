@@ -6,6 +6,15 @@
 
   "dependencies": {
     "BDSA2016.Lecture07.Lib": "1.0.0-*",
+    "Microsoft.Framework.Configuration": "1.0.0-beta8",
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.1",
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.0.1",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
+    "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.0.1",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.0.1",
     "Microsoft.Extensions.DependencyInjection": "1.0.0",
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.NETCore.App": {

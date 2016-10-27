@@ -2,6 +2,10 @@
 using BDSA2016.Lecture07.Lib.Game;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using BDSA2016.Lecture07.Lib.ChainOfResponsibility;
+using BDSA2016.Lecture07.Lib.Strategy;
+using BDSA2016.Lecture07.Lib.Bridge;
+using System.Threading.Tasks;
 
 namespace BDSA2016.Lecture07.App
 {
@@ -9,6 +13,7 @@ namespace BDSA2016.Lecture07.App
     {
         static void Main(string[] args)
         {
+            Bridge().Wait();
         }
 
         static void IoC()
@@ -23,44 +28,13 @@ namespace BDSA2016.Lecture07.App
             throw new NotImplementedException();
         }
 
-        static void Game()
+        static async Task Bridge()
         {
-            Console.Clear();
+            var connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Futurama;Integrated Security=SSPI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-            var factory = new WeaponFactory();
+            var bridge = new Bridge(new AdoNetCharacterRepository(connectionString));
 
-            IWeapon weapon = null;
-
-            do
-            {
-                Console.WriteLine("Please choose your weapon");
-
-                foreach (var available in factory.Available())
-                {
-                    Console.WriteLine($"- {available}");
-                }
-
-                var input = Console.ReadLine();
-
-                weapon = factory.Make(input);
-            }
-            while (weapon == null);
-
-            Console.WriteLine("You have chosen wisely...");
-
-            Console.WriteLine($"A {weapon.Name} with damage {weapon.Damage} and range {weapon.Range}");
-
-            Console.WriteLine();
-
-            Console.WriteLine("Try again [y/n]");
-
-            var key = Console.ReadKey();
-            Console.WriteLine();
-
-            if (key.KeyChar == 'y')
-            {
-                Game();
-            }
+            await bridge.PrintAll();
         }
     }
 }

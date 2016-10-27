@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using BDSA2016.Lecture06.Lib.Animals;
+using BDSA2016.Lecture07.Lib.Bridge;
 
 namespace BDSA2016.Lecture07.App
 {
