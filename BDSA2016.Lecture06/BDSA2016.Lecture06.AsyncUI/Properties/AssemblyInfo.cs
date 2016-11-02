@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BDSA2015.Lecture06.AsyncUI")]
+[assembly: AssemblyTitle("BDSA2016.Lecture06.AsyncUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BDSA2015.Lecture06.AsyncUI")]
+[assembly: AssemblyProduct("BDSA2016.Lecture06.AsyncUI")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
