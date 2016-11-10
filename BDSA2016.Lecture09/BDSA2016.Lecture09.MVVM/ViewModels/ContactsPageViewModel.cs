@@ -1,4 +1,5 @@
 ﻿using BDSA2016.Lecture09.MVVM.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -19,6 +20,8 @@ namespace BDSA2016.Lecture09.MVVM.ViewModels
         public ICommand BackCommand { get; set; }
 
         public ICommand NewCommand { get; set; }
+
+        public ICommand NewDummyCommand => new RelayCommand(o => Contacts.Add(new ContactPageViewModel { Id = 7, Name = Guid.NewGuid().ToString().Substring(0, 5) }));
 
         public void Initialize()
         {

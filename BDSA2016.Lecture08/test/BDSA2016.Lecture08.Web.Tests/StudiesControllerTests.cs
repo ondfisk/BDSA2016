@@ -203,7 +203,7 @@ namespace BDSA2016.Lecture08.Web.Tests
             Assert.IsType<NoContentResult>(result);
         }
 
-        [Fact]
+        [Fact(DisplayName = "Delete when repo return true return NoContent")]
         public async Task Delete_when_repository_Delete_returns_true_returns_NoContent()
         {
             var repository = new Mock<IStudyRepository>();

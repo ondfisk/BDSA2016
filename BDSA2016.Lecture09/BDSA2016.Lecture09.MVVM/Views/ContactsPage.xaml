@@ -16,11 +16,12 @@
             <Button Margin="25,0,50,0" Content="Back" Command="{Binding BackCommand}" Width="100" Height="50" FontSize="30" Background="DarkRed" />
             <TextBlock Text="Contacts" FontSize="50" VerticalAlignment="Center" />
             <Button Margin="25,0,50,0" Content="New" Command="{Binding NewCommand}" Width="100" Height="50" FontSize="30" Background="DarkRed" />
+            <Button Margin="25,0,50,0" Content="New Dummy" Command="{Binding NewDummyCommand}" Width="200" Height="50" FontSize="30" Background="Blue" />
         </StackPanel>
-        <GridView Grid.Row="1" SelectionMode="Single" SelectionChanged="GridView_SelectionChanged" ItemsSource="{Binding Contacts}">
+        <GridView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Contacts}" SelectionChanged="GridView_SelectionChanged">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Margin="25">
                         <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" />
                         <TextBlock Text="{Binding Email}" FontSize="30" />
                     </StackPanel>
