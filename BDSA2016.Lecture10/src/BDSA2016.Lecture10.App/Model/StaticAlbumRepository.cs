@@ -13,7 +13,7 @@ namespace BDSA2016.Lecture10.App.Model
     {
         public async Task<int> CreateAsync(Album album)
         {
-            return await Task.FromResult(0);
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Album>> ReadAsync()
@@ -50,17 +50,17 @@ namespace BDSA2016.Lecture10.App.Model
 
         public async Task<bool> UpdateAsync(Album album)
         {
-            return await Task.FromResult(false);
+            throw new NotImplementedException();
         }
 
         public async Task<bool> DeleteAsync(int albumId)
         {
-            return await Task.FromResult(false);
+            throw new NotImplementedException();
         }
 
         public async Task SeedAsync()
         {
-            await Task.FromResult<object>(null);
+            throw new NotImplementedException();
         }
 
         public void Dispose()

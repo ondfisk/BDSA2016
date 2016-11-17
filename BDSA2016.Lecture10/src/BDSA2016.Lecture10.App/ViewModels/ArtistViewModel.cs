@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BDSA2016.Lecture10.App.ViewModels
+﻿namespace BDSA2016.Lecture10.App.ViewModels
 {
     public class ArtistViewModel : BaseViewModel
     {

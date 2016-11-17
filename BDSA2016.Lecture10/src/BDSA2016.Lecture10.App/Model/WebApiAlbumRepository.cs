@@ -12,27 +12,27 @@ namespace BDSA2016.Lecture10.App.Model
     public class WebApiAlbumRepository : IAlbumRepository
     {
         private readonly HttpClient _client;
-        private readonly MediaTypeFormatter _formatter;
+        //private readonly MediaTypeFormatter _formatter;
 
-        public WebApiAlbumRepository()
+        public WebApiAlbumRepository(HttpClient client)
         {
-            _client = new HttpClient
-            {
-                BaseAddress = new Uri("http://localhost:1667/")
-            };
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/bson"));
+            _client = client;
 
-            _formatter = new BsonMediaTypeFormatter();
+            // TODO: Load from settings
+            _client.BaseAddress = new Uri("http://localhost:1667/");
+            
+            //_client.DefaultRequestHeaders.Accept.Clear();
+            //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/bson"));
+            //_formatter = new JsonMediaTypeFormatter(); // BsonMediaTypeFormatter();
         }
 
         public async Task<int> CreateAsync(Album album)
         {
-            var result = await _client.PostAsync("api/albums", album, _formatter);
+            var result = await _client.PostAsJsonAsync("api/albums", album);
 
             if (result.IsSuccessStatusCode)
             {
-                var created = await result.Content.ReadAsAsync<Album>(new[] { _formatter });
+                var created = await result.Content.ReadAsAsync<Album>();
 
                 return created.Id;
             }
@@ -53,7 +53,7 @@ namespace BDSA2016.Lecture10.App.Model
 
             if (result.IsSuccessStatusCode)
             {
-                return await result.Content.ReadAsAsync<IEnumerable<Album>>(new[] { _formatter });
+                return await result.Content.ReadAsAsync<IEnumerable<Album>>();
             }
 
             return Enumerable.Empty<Album>();
@@ -61,12 +61,12 @@ namespace BDSA2016.Lecture10.App.Model
 
         public Task SeedAsync()
         {
-            return Task.FromResult<object>(null);
+            throw new NotImplementedException();
         }
 
         public async Task<bool> UpdateAsync(Album album)
         {
-            var result = await _client.PutAsync($"api/albums/{album.Id}", album, _formatter);
+            var result = await _client.PutAsJsonAsync($"api/albums/{album.Id}", album);
 
             return result.IsSuccessStatusCode;
         }

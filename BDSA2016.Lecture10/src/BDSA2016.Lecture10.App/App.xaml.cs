@@ -11,6 +11,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
 
 namespace BDSA2016.Lecture10.App
 {
@@ -27,11 +28,6 @@ namespace BDSA2016.Lecture10.App
         {
             InitializeComponent();
             Suspending += OnSuspending;
-
-            using (var db = new AlbumContext())
-            {
-                db.Database.Migrate();
-            }
 
             RegisterServices();
         }
@@ -139,16 +135,27 @@ namespace BDSA2016.Lecture10.App
         private void RegisterServices()
         {
             var services = new ServiceCollection();
-            services.AddScoped<IAlbumContext, AlbumContext>();
-            //services.AddScoped<IAlbumRepository, EntityFrameworkAlbumRepository>();
-            //services.AddScoped<IArtistRepository, EntityFrameworkArtistRepository>();
-            services.AddScoped<IAlbumRepository, WebApiAlbumRepository>();
-            services.AddScoped<IArtistRepository, WebApiArtistRepository>();
+            services.AddTransient<IAlbumRepository, StaticAlbumRepository>();
+            services.AddTransient<IArtistRepository, StaticArtistRepository>();
             services.AddTransient<AlbumsViewModel>();
             services.AddTransient<AlbumViewModel>();
+            services.AddTransient<AlbumEditViewModel>();
             services.AddTransient<ArtistViewModel>();
             
             Container = services.BuildServiceProvider();
+
+            #region other implementations
+            //services.AddTransient<IAlbumContext, AlbumContext>();
+            //using (var db = new AlbumContext())
+            //{
+            //    db.Database.Migrate();
+            //}
+            //services.AddTransient<IAlbumRepository, EntityFrameworkAlbumRepository>();
+            //services.AddTransient<IArtistRepository, EntityFrameworkArtistRepository>();
+            //services.AddTransient<IAlbumRepository, WebApiAlbumRepository>();
+            //services.AddTransient<IArtistRepository, WebApiArtistRepository>();
+            //services.AddTransient<HttpClient>();
+            #endregion
         }
 
         public IServiceProvider Container { get; private set; }

@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace BDSA2016.Lecture10.App.ViewModels
 {
-    public class AlbumsViewModel : BaseViewModel
+    public class AlbumsViewModel : DisposableBaseViewModel
     {
         private readonly IAlbumRepository _repository;
 
@@ -51,9 +51,26 @@ namespace BDSA2016.Lecture10.App.ViewModels
             }
         }
 
-        public override void Dispose()
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected override void Dispose(bool disposing)
         {
-            _repository.Dispose();
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _repository.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+
+                base.Dispose(disposing);
+            }
         }
+        #endregion
     }
 }

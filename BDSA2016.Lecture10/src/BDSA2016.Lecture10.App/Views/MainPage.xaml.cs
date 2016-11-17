@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Extensions.DependencyInjection;
+using Windows.UI.Xaml.Navigation;
 
 namespace BDSA2016.Lecture10.App.Views
 {
@@ -24,6 +25,13 @@ namespace BDSA2016.Lecture10.App.Views
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _vm.EditCommand.OnCanExecuteChanged(sender);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            _vm.Dispose();
+
+            base.OnNavigatedFrom(e);
         }
     }
 }

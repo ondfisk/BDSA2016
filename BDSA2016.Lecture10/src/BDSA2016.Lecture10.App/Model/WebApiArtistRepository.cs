@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BDSA2016.Lecture10.App.Model
@@ -13,12 +10,12 @@ namespace BDSA2016.Lecture10.App.Model
     {
         private readonly HttpClient _client;
 
-        public WebApiArtistRepository()
+        public WebApiArtistRepository(HttpClient client)
         {
-            _client = new HttpClient
-            {
-                BaseAddress = new Uri("http://localhost:1667/")
-            };
+            _client = client;
+
+            // TODO: Load from settings
+            _client.BaseAddress = new Uri("http://localhost:1667/");
         }
 
         public async Task<int> CreateAsync(Artist artist)
