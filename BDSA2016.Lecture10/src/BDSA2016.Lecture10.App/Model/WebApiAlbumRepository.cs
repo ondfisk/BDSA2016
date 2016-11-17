@@ -12,7 +12,7 @@ namespace BDSA2016.Lecture10.App.Model
     public class WebApiAlbumRepository : IAlbumRepository
     {
         private readonly HttpClient _client;
-        //private readonly MediaTypeFormatter _formatter;
+        private readonly MediaTypeFormatter _formatter;
 
         public WebApiAlbumRepository(HttpClient client)
         {
@@ -20,10 +20,10 @@ namespace BDSA2016.Lecture10.App.Model
 
             // TODO: Load from settings
             _client.BaseAddress = new Uri("http://localhost:1667/");
-            
-            //_client.DefaultRequestHeaders.Accept.Clear();
-            //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/bson"));
-            //_formatter = new JsonMediaTypeFormatter(); // BsonMediaTypeFormatter();
+
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/bson"));
+            _formatter = new BsonMediaTypeFormatter();
         }
 
         public async Task<int> CreateAsync(Album album)
@@ -32,7 +32,7 @@ namespace BDSA2016.Lecture10.App.Model
 
             if (result.IsSuccessStatusCode)
             {
-                var created = await result.Content.ReadAsAsync<Album>();
+                var created = await result.Content.ReadAsAsync<Album>(new[] { _formatter });
 
                 return created.Id;
             }
@@ -53,7 +53,7 @@ namespace BDSA2016.Lecture10.App.Model
 
             if (result.IsSuccessStatusCode)
             {
-                return await result.Content.ReadAsAsync<IEnumerable<Album>>();
+                return await result.Content.ReadAsAsync<IEnumerable<Album>>(new[] { _formatter });
             }
 
             return Enumerable.Empty<Album>();
@@ -66,8 +66,8 @@ namespace BDSA2016.Lecture10.App.Model
 
         public async Task<bool> UpdateAsync(Album album)
         {
-            var result = await _client.PutAsJsonAsync($"api/albums/{album.Id}", album);
-
+            var result = await _client.PutAsync($"api/albums/{album.Id}", album, _formatter);
+            
             return result.IsSuccessStatusCode;
         }
 

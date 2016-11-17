@@ -18,7 +18,8 @@
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.0",
     "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0",
-    "WebApiContrib.Core.Formatter.Bson": "1.0.0"
+    "WebApiContrib.Core.Formatter.Bson": "1.0.0",
+    "WebAPIContrib.Core.Formatter.Csv":  "1.0.0"
   },
 
   "tools": {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using BDSA2016.Lecture10.Web.Model;
 using BDSA2016.Lecture10.Entities;
 using WebApiContrib.Core.Formatter.Bson;
+using WebApiContrib.Core.Formatter.Csv;
 
 namespace BDSA2016.Lecture10.Web
 {
@@ -37,6 +34,7 @@ namespace BDSA2016.Lecture10.Web
             // Add framework services.
             services.AddMvc(c => c.RespectBrowserAcceptHeader = true)
                 .AddXmlSerializerFormatters()
+                .AddCsvSerializerFormatters()
                 .AddBsonSerializerFormatters();
         }
 

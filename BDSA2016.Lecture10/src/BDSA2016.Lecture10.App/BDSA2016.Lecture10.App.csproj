@@ -105,6 +105,7 @@
     <Compile Include="Model\IArtistRepository.cs" />
     <Compile Include="Model\WebApiArtistRepository.cs" />
     <Compile Include="Model\WebApiAlbumRepository.cs" />
+    <Compile Include="Model\WebArtistRepository.cs" />
     <Compile Include="ViewModels\AlbumEditViewModel.cs" />
     <Compile Include="ViewModels\AlbumViewModel.cs" />
     <Compile Include="Model\EntityFrameworkAlbumRepository.cs" />
@@ -138,6 +139,9 @@
     <Content Include="Assets\Covers\GatewaysToAnnihilation.jpg" />
     <Content Include="Assets\Covers\Heretic.jpg" />
     <Content Include="Assets\Covers\IlludDivinumInsanus.jpg" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

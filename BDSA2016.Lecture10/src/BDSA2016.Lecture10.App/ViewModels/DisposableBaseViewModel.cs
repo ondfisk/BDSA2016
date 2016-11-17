@@ -6,6 +6,7 @@ namespace BDSA2016.Lecture10.App.ViewModels
 {
     public abstract class DisposableBaseViewModel : BaseViewModel, IDisposable
     {
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
@@ -26,7 +27,7 @@ namespace BDSA2016.Lecture10.App.ViewModels
         }
 
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~BaseViewModel() {
+        // ~DisposableBaseViewModel() {
         //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
         //   Dispose(false);
         // }

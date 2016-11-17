@@ -135,13 +135,23 @@ namespace BDSA2016.Lecture10.App
         private void RegisterServices()
         {
             var services = new ServiceCollection();
-            services.AddTransient<IAlbumRepository, StaticAlbumRepository>();
-            services.AddTransient<IArtistRepository, StaticArtistRepository>();
+            //services.AddTransient<IAlbumRepository, StaticAlbumRepository>();
+            //services.AddTransient<IArtistRepository, StaticArtistRepository>();
+            //services.AddTransient<IAlbumContext, AlbumContext>();
+            //using (var db = new AlbumContext())
+            //{
+            //    db.Database.Migrate();
+            //}
+            //services.AddTransient<IAlbumRepository, EntityFrameworkAlbumRepository>();
+            //services.AddTransient<IArtistRepository, EntityFrameworkArtistRepository>();
+            services.AddTransient<IArtistRepository, WebApiArtistRepository>();
+            services.AddTransient<IAlbumRepository, WebApiAlbumRepository>();
             services.AddTransient<AlbumsViewModel>();
             services.AddTransient<AlbumViewModel>();
             services.AddTransient<AlbumEditViewModel>();
             services.AddTransient<ArtistViewModel>();
-            
+            services.AddTransient<HttpClient>();
+
             Container = services.BuildServiceProvider();
 
             #region other implementations
