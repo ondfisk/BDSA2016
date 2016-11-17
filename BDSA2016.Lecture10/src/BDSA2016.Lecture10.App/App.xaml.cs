@@ -153,19 +153,6 @@ namespace BDSA2016.Lecture10.App
             services.AddTransient<HttpClient>();
 
             Container = services.BuildServiceProvider();
-
-            #region other implementations
-            //services.AddTransient<IAlbumContext, AlbumContext>();
-            //using (var db = new AlbumContext())
-            //{
-            //    db.Database.Migrate();
-            //}
-            //services.AddTransient<IAlbumRepository, EntityFrameworkAlbumRepository>();
-            //services.AddTransient<IArtistRepository, EntityFrameworkArtistRepository>();
-            //services.AddTransient<IAlbumRepository, WebApiAlbumRepository>();
-            //services.AddTransient<IArtistRepository, WebApiArtistRepository>();
-            //services.AddTransient<HttpClient>();
-            #endregion
         }
 
         public IServiceProvider Container { get; private set; }
