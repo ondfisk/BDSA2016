@@ -1,6 +1,9 @@
 {
+  "userSecretsId": "aspnet-BDSA2016.Lecture11.Web-fda0642f-3f77-47e8-a776-fc04a97b3d82",
+
   "dependencies": {
     "BDSA2016.Lecture11.Entities": "1.0.0-*",
+    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
     "Microsoft.AspNetCore.Routing": "1.1.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
@@ -19,7 +22,8 @@
     "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.0",
     "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.0",
     "WebApiContrib.Core.Formatter.Bson": "1.0.0",
-    "WebAPIContrib.Core.Formatter.Csv": "1.0.1"
+    "WebAPIContrib.Core.Formatter.Csv": "1.0.1",
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0"
   },
 
   "tools": {

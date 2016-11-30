@@ -1,10 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BDSA2016.Lecture11.Web.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BDSA2016.Lecture11.Web.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class AlbumsController : Controller
     {
