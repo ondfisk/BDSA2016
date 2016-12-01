@@ -33,5 +33,10 @@ namespace BDSA2016.Lecture11.App.Views
 
             base.OnNavigatedFrom(e);
         }
+
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SignInPage));
+        }
     }
 }

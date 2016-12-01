@@ -10,6 +10,5 @@ namespace BDSA2016.Lecture11.App.Model
         Task<IEnumerable<Album>> ReadAsync();
         Task<bool> UpdateAsync(Album album);
         Task<bool> DeleteAsync(int albumId);
-        Task SeedAsync();
     }
 }

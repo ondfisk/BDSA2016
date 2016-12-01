@@ -100,6 +100,9 @@
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\Artist.cs" />
+    <Compile Include="Model\Auth.cs" />
+    <Compile Include="Model\IAuth.cs" />
+    <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="Model\IArtistRepository.cs" />
     <Compile Include="Model\ArtistRepository.cs" />
     <Compile Include="Model\AlbumRepository.cs" />
@@ -117,6 +120,9 @@
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +203,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

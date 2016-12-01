@@ -2,24 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Windows.Security.Authentication.Web.Core;
+using Windows.UI.Popups;
 
 namespace BDSA2016.Lecture11.App.Model
 {
     public class ArtistRepository : IArtistRepository
     {
         private readonly HttpClient _client;
+        private readonly IAuth _auth;
 
-        public ArtistRepository(HttpClient client)
+        public ArtistRepository(HttpClient client, IAuth auth)
         {
             _client = client;
+            _auth = auth;
 
             // TODO: Load from settings
             _client.BaseAddress = new Uri("http://localhost:1667/");
         }
 
+        private async Task Auth()
+        {
+            // craft the token request for the Graph api
+            var wtr = new WebTokenRequest(_auth.AccountProvider, string.Empty, _auth.ClientId);
+            wtr.Properties.Add("resource", _auth.Resource);
+            // perform the token request without showing any UX
+            var wtrr = await WebAuthenticationCoreManager.GetTokenSilentlyAsync(wtr, _auth.Account);
+            if (wtrr.ResponseStatus == WebTokenRequestStatus.Success)
+            {
+                var accessToken = wtrr.ResponseData[0].Token;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                var messageDialog = new MessageDialog("We tried to get a token for the API as the account you are currently signed in, but it didn't work out. Please sign in as a different user.");
+                await messageDialog.ShowAsync();
+            }
+        }
+
         public async Task<int> CreateAsync(Artist artist)
         {
+            await Auth();
+
             var result = await _client.PostAsJsonAsync("api/artists", artist);
 
             if (result.IsSuccessStatusCode)
@@ -34,6 +60,8 @@ namespace BDSA2016.Lecture11.App.Model
 
         public async Task<bool> DeleteAsync(int artistId)
         {
+            await Auth();
+
             var result = await _client.DeleteAsync($"api/artists/{artistId}");
 
             return result.IsSuccessStatusCode;
@@ -41,6 +69,8 @@ namespace BDSA2016.Lecture11.App.Model
 
         public async Task<IEnumerable<Artist>> ReadAsync()
         {
+            await Auth();
+
             var result = await _client.GetAsync("api/artists");
 
             if (result.IsSuccessStatusCode)
@@ -51,13 +81,10 @@ namespace BDSA2016.Lecture11.App.Model
             return Enumerable.Empty<Artist>();
         }
 
-        public Task SeedAsync()
-        {
-            return Task.FromResult<object>(null);
-        }
-
         public async Task<bool> UpdateAsync(Artist artist)
         {
+            await Auth();
+
             var result = await _client.PutAsJsonAsync($"api/artists/{artist.Id}", artist);
 
             return result.IsSuccessStatusCode;

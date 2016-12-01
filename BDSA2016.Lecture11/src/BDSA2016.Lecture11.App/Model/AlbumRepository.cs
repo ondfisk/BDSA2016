@@ -4,19 +4,22 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
+using Windows.Security.Authentication.Web.Core;
+using Windows.UI.Popups;
 
 namespace BDSA2016.Lecture11.App.Model
 {
     public class AlbumRepository : IAlbumRepository
     {
         private readonly HttpClient _client;
+        private readonly IAuth _auth;
         private readonly MediaTypeFormatter _formatter;
 
-        public AlbumRepository(HttpClient client)
+        public AlbumRepository(HttpClient client, IAuth auth)
         {
             _client = client;
+            _auth = auth;
 
             // TODO: Load from settings
             _client.BaseAddress = new Uri("http://localhost:1667/");
@@ -26,8 +29,29 @@ namespace BDSA2016.Lecture11.App.Model
             _formatter = new BsonMediaTypeFormatter();
         }
 
+        private async Task Auth()
+        {
+            // craft the token request for the Graph api
+            var wtr = new WebTokenRequest(_auth.AccountProvider, string.Empty, _auth.ClientId);
+            wtr.Properties.Add("resource", _auth.Resource);
+            // perform the token request without showing any UX
+            var wtrr = await WebAuthenticationCoreManager.GetTokenSilentlyAsync(wtr, _auth.Account);
+            if (wtrr.ResponseStatus == WebTokenRequestStatus.Success)
+            {
+                var accessToken = wtrr.ResponseData[0].Token;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                var messageDialog = new MessageDialog("We tried to get a token for the API as the account you are currently signed in, but it didn't work out. Please sign in as a different user.");
+                await messageDialog.ShowAsync();
+            }
+        }
+
         public async Task<int> CreateAsync(Album album)
         {
+            await Auth();
+
             var result = await _client.PostAsJsonAsync("api/albums", album);
 
             if (result.IsSuccessStatusCode)
@@ -42,6 +66,8 @@ namespace BDSA2016.Lecture11.App.Model
 
         public async Task<bool> DeleteAsync(int albumId)
         {
+            await Auth();
+
             var result = await _client.DeleteAsync($"api/albums/{albumId}");
 
             return result.IsSuccessStatusCode;
@@ -49,6 +75,8 @@ namespace BDSA2016.Lecture11.App.Model
 
         public async Task<IEnumerable<Album>> ReadAsync()
         {
+            await Auth();
+
             var result = await _client.GetAsync("api/albums");
 
             if (result.IsSuccessStatusCode)
@@ -59,13 +87,10 @@ namespace BDSA2016.Lecture11.App.Model
             return Enumerable.Empty<Album>();
         }
 
-        public Task SeedAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> UpdateAsync(Album album)
         {
+            await Auth();
+
             var result = await _client.PutAsync($"api/albums/{album.Id}", album, _formatter);
             
             return result.IsSuccessStatusCode;

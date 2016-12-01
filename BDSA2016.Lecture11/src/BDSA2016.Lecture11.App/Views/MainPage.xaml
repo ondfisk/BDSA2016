@@ -75,6 +75,7 @@
             <CommandBar>
                 <AppBarButton Icon="Add" Label="Add album" Command="{Binding AddCommand}" />
                 <AppBarButton Icon="Edit" Label="Edit album" Command="{Binding EditCommand}" />
+                <AppBarButton Icon="Permissions" Label="Sign In" Click="SignIn_Click" />
             </CommandBar>
         </AppBar>
     </Page.BottomAppBar>
