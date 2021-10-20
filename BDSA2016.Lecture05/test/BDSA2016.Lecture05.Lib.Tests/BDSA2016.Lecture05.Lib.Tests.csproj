@@ -2,18 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BDSA2016.Lecture06.Lib\BDSA2016.Lecture06.Lib.csproj" />
+    <ProjectReference Include="..\..\src\BDSA2016.Lecture05.Entities\BDSA2016.Lecture05.Entities.csproj" />
+    <ProjectReference Include="..\..\src\BDSA2016.Lecture05.Lib\BDSA2016.Lecture05.Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,8 +16,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-    <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.11" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
 </Project>

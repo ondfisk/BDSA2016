@@ -24,7 +24,7 @@ namespace BDSA2016.Lecture02.Lib.Tests
 
             var evens = CollectionUtilities.GetEven(numbers);
 
-            evens.ShouldBeEquivalentTo(new[] { 4, 2 });
+            Assert.True(new HashSet<int> { 4, 2 }.SetEquals(evens));
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace BDSA2016.Lecture02.Lib.Tests
 
             var unique = CollectionUtilities.Unique(numbers);
 
-            unique.ShouldBeEquivalentTo(new[] { 1, 2, 3, 4, 5 });
+            Assert.True(new HashSet<int> { 1, 2, 3, 4, 5 }.SetEquals(unique));
         }
     }
 }

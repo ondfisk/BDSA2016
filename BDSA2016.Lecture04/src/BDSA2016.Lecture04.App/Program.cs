@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System;
+﻿using System;
 using BDSA2016.Lecture04.Lib;
-using Microsoft.Framework.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace BDSA2016.Lecture04.App
 {
@@ -22,12 +21,12 @@ namespace BDSA2016.Lecture04.App
 
         private static string GetSetting(string key)
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            //var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 
-            var configuration = builder.Build();
-            var setting = configuration[key];
+            //var configuration = builder.Build();
+            //var setting = configuration[key];
 
-            return setting;
+            return "setting";
         }
     }
 }

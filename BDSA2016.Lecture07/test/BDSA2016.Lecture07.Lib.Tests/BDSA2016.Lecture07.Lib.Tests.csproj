@@ -2,18 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BDSA2016.Lecture06.Lib\BDSA2016.Lecture06.Lib.csproj" />
+    <ProjectReference Include="..\..\src\BDSA2016.Lecture07.Lib\BDSA2016.Lecture07.Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

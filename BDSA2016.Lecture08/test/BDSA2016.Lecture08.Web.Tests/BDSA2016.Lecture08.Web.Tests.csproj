@@ -2,18 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BDSA2016.Lecture06.Lib\BDSA2016.Lecture06.Lib.csproj" />
+    <ProjectReference Include="..\..\src\BDSA2016.Lecture08.Web\BDSA2016.Lecture08.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +16,7 @@
     </PackageReference>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
